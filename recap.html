@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Newcastle 2050: What if? — your salon, in one page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tedx: #eb0028;
+    --tedx-dark: #8f0b0d;
+    --pink-soft: #ffe5ea;
+    --pink: #ffb3c0;
+    --ink: #1e1c1c;
+    --body: #3c3a3a;
+    --rule: #e5e0e0;
+    --bg-soft: #f5f2f2;
+    --white: #ffffff;
+    --blue: #2f5da8;
+    --orange: #f5a524;
+    --t-cat: #2f5da8;
+    --h-cat: #1f8b4c;
+    --n-cat: #7a3aa7;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============= HERO ============= */
+  .hero {
+    background: linear-gradient(46deg, var(--tedx-dark) 0%, var(--tedx) 50%, #ff3551 100%);
+    color: white;
+    padding: 70px 24px 90px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,.08), transparent 40%),
+                      radial-gradient(circle at 80% 80%, rgba(255,255,255,.06), transparent 40%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+  .hero .eyebrow {
+    display: inline-block; padding: 6px 14px; background: rgba(255,255,255,.15);
+    color: white; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+    border-radius: 4px; margin-bottom: 22px; backdrop-filter: blur(8px);
+  }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 78px); margin: 0 0 12px; line-height: 1.0; font-weight: 800;
+    letter-spacing: -0.025em;
+  }
+  .hero h1 em { font-style: italic; font-weight: 800; opacity: .9; }
+  .hero .lede {
+    font-size: clamp(17px, 1.6vw, 21px); max-width: 640px; line-height: 1.45; opacity: .95; margin: 0 0 28px;
+    font-weight: 400;
+  }
+  .hero .meta {
+    display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; opacity: .85;
+    border-top: 1px solid rgba(255,255,255,.2); padding-top: 18px; max-width: 700px;
+  }
+  .hero .meta div strong { display: block; font-size: 13px; opacity: .7; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+
+  /* ============= SECTION SHELL ============= */
+  section { padding: 70px 24px; }
+  section.tight { padding: 56px 24px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h2.h {
+    font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; letter-spacing: -.018em;
+    margin: 0 0 8px;
+  }
+  h2.h .accent { color: var(--tedx); }
+  p.sub {
+    font-size: 17px; color: var(--body); margin: 0 0 36px; max-width: 720px;
+  }
+
+  /* ============= STATS ============= */
+  .stats-section { background: var(--bg-soft); }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px;
+  }
+  .stat {
+    background: white; padding: 30px 24px; border-radius: 12px; text-align: left;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.04);
+    border-top: 3px solid var(--tedx);
+  }
+  .stat .num {
+    font-size: 48px; font-weight: 800; color: var(--tedx); line-height: 1; letter-spacing: -.03em;
+    margin-bottom: 8px;
+  }
+  .stat .lbl { font-size: 14px; color: var(--body); font-weight: 500; }
+
+  /* ============= TOPIC BLOCKS ============= */
+  .topic {
+    border-radius: 16px; padding: 38px 36px; margin-bottom: 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 12px 32px rgba(0,0,0,.06);
+    background: white; border-left: 6px solid var(--cat);
+    display: grid; grid-template-columns: 220px 1fr; gap: 36px; align-items: start;
+  }
+  .topic.transport { --cat: var(--t-cat); }
+  .topic.health    { --cat: var(--h-cat); }
+  .topic.night     { --cat: var(--n-cat); }
+  .topic .topic-head .emoji { font-size: 56px; line-height: 1; margin-bottom: 8px; display: block; }
+  .topic .topic-head h3 { font-size: 22px; font-weight: 700; margin: 0 0 4px; color: var(--cat); letter-spacing: -.01em; }
+  .topic .topic-head .q { font-size: 13px; color: var(--body); font-style: italic; line-height: 1.4; }
+  .topic .topic-body .lead {
+    font-size: clamp(20px, 2.2vw, 26px); font-weight: 600; line-height: 1.3; margin: 0 0 22px;
+    color: var(--ink); letter-spacing: -.01em;
+  }
+  .topic .topic-body .lead .hl { background: linear-gradient(180deg, transparent 60%, var(--pink) 60%); padding: 0 2px; }
+  .topic .signals {
+    display: grid; gap: 10px;
+  }
+  .topic .signal {
+    display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start;
+    font-size: 15px; color: var(--body); line-height: 1.5;
+  }
+  .topic .signal .dot {
+    width: 8px; height: 8px; background: var(--cat); border-radius: 50%; margin-top: 8px;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--cat) 12%, transparent);
+  }
+
+  @media (max-width: 720px) {
+    .topic { grid-template-columns: 1fr; gap: 18px; padding: 28px 24px; }
+    .topic .topic-head { display: flex; align-items: center; gap: 14px; }
+    .topic .topic-head .emoji { font-size: 36px; margin-bottom: 0; }
+    .topic .topic-head h3 { font-size: 18px; }
+  }
+
+  /* ============= BIG THREAD ============= */
+  .thread-section {
+    background: linear-gradient(180deg, var(--pink-soft) 0%, white 100%);
+  }
+  .thread {
+    background: white; border-radius: 18px; padding: 50px 48px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.06), 0 24px 64px rgba(235,0,40,.08);
+    border-top: 6px solid var(--tedx);
+  }
+  .thread .lbl {
+    color: var(--tedx); font-size: 12px; font-weight: 700; letter-spacing: .2em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .thread h3 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -.02em;
+    line-height: 1.15; margin: 0 0 22px; color: var(--ink); max-width: 880px;
+  }
+  .thread h3 em { font-style: italic; color: var(--tedx); }
+  .thread p {
+    font-size: 18px; line-height: 1.55; color: var(--body); max-width: 780px; margin: 0;
+  }
+
+  /* ============= TENSIONS ============= */
+  .tensions { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .tension-card {
+    background: white; border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .tension-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+  .tension-card .pair {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    font-size: 15px; font-weight: 700;
+  }
+  .tension-card .pair .a { color: var(--tedx); }
+  .tension-card .pair .vs {
+    background: var(--bg-soft); border-radius: 999px; padding: 2px 10px; font-size: 11px;
+    color: var(--body); font-weight: 600; flex-shrink: 0;
+  }
+  .tension-card .pair .b { color: var(--blue); }
+  .tension-card p {
+    font-size: 13px; color: var(--body); line-height: 1.45; margin: 0;
+  }
+
+  /* ============= QUOTES ============= */
+  .quotes-section { background: var(--ink); color: white; }
+  .quotes-section h2.h, .quotes-section p.sub { color: white; }
+  .quotes-section p.sub { opacity: .8; }
+  .quotes-section h2.h .accent { color: var(--pink); }
+  .quotes-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px;
+  }
+  .pq {
+    background: rgba(255,255,255,.04); border-left: 3px solid var(--tedx);
+    padding: 26px 28px; border-radius: 6px; position: relative;
+  }
+  .pq::before {
+    content: "\201C"; font-size: 80px; position: absolute; top: -8px; left: 12px;
+    color: var(--tedx); opacity: .5; font-family: Georgia, serif; line-height: 1;
+  }
+  .pq p {
+    font-size: 18px; font-weight: 500; line-height: 1.4; margin: 0 0 14px; position: relative;
+    z-index: 1; font-family: Georgia, "Times New Roman", serif; font-style: italic;
+  }
+  .pq .src { font-size: 12px; opacity: .65; letter-spacing: .04em; }
+
+  /* ============= WISHES ============= */
+  .wishes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .wish {
+    background: white; border-radius: 14px; padding: 30px 28px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 12px 32px rgba(0,0,0,.06);
+    border-top: 4px solid var(--cat);
+  }
+  .wish.transport { --cat: var(--t-cat); }
+  .wish.health    { --cat: var(--h-cat); }
+  .wish.night     { --cat: var(--n-cat); }
+  .wish .icon { font-size: 36px; line-height: 1; margin-bottom: 12px; }
+  .wish .topic-tag {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--cat); padding: 3px 10px; background: color-mix(in srgb, var(--cat) 10%, white);
+    border-radius: 4px; margin-bottom: 10px;
+  }
+  .wish h4 { font-size: 18px; font-weight: 700; margin: 0 0 8px; line-height: 1.25; }
+  .wish p { font-size: 14px; color: var(--body); line-height: 1.5; margin: 0; }
+
+  /* ============= NEXT ============= */
+  .next-section { background: linear-gradient(180deg, white 0%, var(--bg-soft) 100%); }
+  .next-card {
+    background: white; padding: 50px 48px; border-radius: 18px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 12px 32px rgba(0,0,0,.06);
+    text-align: center;
+  }
+  .next-card h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 800; letter-spacing: -.02em; margin: 0 0 14px; }
+  .next-card p { font-size: 17px; color: var(--body); max-width: 620px; margin: 0 auto 26px; line-height: 1.55; }
+  .cta {
+    display: inline-block; background: var(--tedx); color: white; padding: 14px 28px;
+    border-radius: 6px; font-weight: 700; font-size: 15px; text-decoration: none;
+    letter-spacing: .04em; transition: transform .12s ease, background .12s ease;
+  }
+  .cta:hover { background: var(--tedx-dark); transform: translateY(-1px); }
+  .cta.outline {
+    background: transparent; color: var(--tedx); border: 2px solid var(--tedx); padding: 12px 26px;
+    margin-left: 8px;
+  }
+  .cta.outline:hover { background: var(--pink-soft); transform: translateY(-1px); }
+
+  /* ============= FOOT ============= */
+  footer.foot {
+    text-align: center; padding: 36px 24px; background: var(--ink); color: white;
+    font-size: 13px; opacity: .85;
+  }
+  footer.foot a { color: var(--pink); text-decoration: none; }
+  footer.foot a:hover { text-decoration: underline; }
+
+</style>
+</head>
+<body>
+
+<!-- ============= HERO ============= -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">TEDxNewy Salon 1 · Recap</span>
+    <h1>What if Newcastle<br>could be <em>this</em>?</h1>
+    <p class="lede">A snapshot of what you told us at our first salon — three big questions about life in the city in 2050. Thank you for showing up, scribbling on post-its, and arguing thoughtfully with strangers.</p>
+    <div class="meta">
+      <div><strong>When</strong>30 April – 1 May 2026</div>
+      <div><strong>Conversations</strong>3 topic tables</div>
+      <div><strong>Captured</strong>Audio + paper notes</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= STATS ============= -->
+<section class="stats-section tight">
+  <div class="wrap">
+    <h2 class="h">By the <span class="accent">numbers</span></h2>
+    <p class="sub">A small evening, a lot of ideas. Here's what came home with us.</p>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">297</div><div class="lbl">post-it ideas you wrote</div></div>
+      <div class="stat"><div class="num">~104</div><div class="lbl">minutes of conversation recorded</div></div>
+      <div class="stat"><div class="num">~15k</div><div class="lbl">spoken words transcribed</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">questions about 2050</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= WHAT YOU SAID ============= -->
+<section>
+  <div class="wrap">
+    <h2 class="h">What you said, in <span class="accent">three lines</span> per topic</h2>
+    <p class="sub">Each table chewed on a single question for the night. Here's the headline signal — and the next three things you returned to most.</p>
+
+    <div class="topic transport">
+      <div class="topic-head">
+        <span class="emoji">🚲</span>
+        <h3>Transport &amp; Mobility</h3>
+        <div class="q">"How will we move through, in and out of Newcastle in 2050?"</div>
+      </div>
+      <div class="topic-body">
+        <p class="lead">You're ready to be <span class="hl">an e-bike, light-rail, walkable city</span> — but the infrastructure's lagging the appetite.</p>
+        <div class="signals">
+          <div class="signal"><span class="dot"></span><div><strong>E-bikes are accepted as inevitable</strong>, but separated lanes, learner schemes, and lighting on the bike paths are the unfinished work.</div></div>
+          <div class="signal"><span class="dot"></span><div><strong>The tram is loved — and limited</strong>; the most-repeated wish was free or late-night service. <em>"Light rail be in use when people want to use it (e.g. at night)."</em></div></div>
+          <div class="signal"><span class="dot"></span><div><strong>High-speed rail to Sydney is the next big shift</strong>, paired with anxiety about housing affordability if growth isn't actively planned.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic health">
+      <div class="topic-head">
+        <span class="emoji">🌿</span>
+        <h3>Health &amp; Wellbeing</h3>
+        <div class="q">"How will we live well in the city in 2050?"</div>
+      </div>
+      <div class="topic-body">
+        <p class="lead">You named <span class="hl">loneliness as the central health concern</span> — and answered it with intergenerational mixing, third places, and food-and-fire rituals.</p>
+        <div class="signals">
+          <div class="signal"><span class="dot"></span><div><strong>"Stop loneliness"</strong> shows up verbatim. Aged care + child care, multi-gen activities, "in Newy we say HI!" — all part of the same answer.</div></div>
+          <div class="signal"><span class="dot"></span><div><strong>Newcastle's water is wellbeing infrastructure</strong>: ocean baths, Bogey Hole, Glenrock at night, floating saunas in the harbour. The most distinctive thing we have.</div></div>
+          <div class="signal"><span class="dot"></span><div><strong>By 2050, ZERO harassment of women &amp; children.</strong> Posted three times. Underlined.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic night">
+      <div class="topic-head">
+        <span class="emoji">🪩</span>
+        <h3>Night Culture &amp; Economy</h3>
+        <div class="q">"How will we experience the city after dark in 2050?"</div>
+      </div>
+      <div class="topic-body">
+        <p class="lead">Newcastle is <span class="hl">a string of disconnected pockets</span> — and you want them threaded together with light, transit, and suburb-level life.</p>
+        <div class="signals">
+          <div class="signal"><span class="dot"></span><div><strong>Light is the connective tissue of the night</strong>: artistic lighting, lit bike paths, "coloured foot paths to connect the city", "lighting + the presence of people make a place feel safe".</div></div>
+          <div class="signal"><span class="dot"></span><div><strong>14–18 and 30+ are underserved</strong>. You proposed age-bracketed venues and family-friendly nights as a structural answer — not a wishlist.</div></div>
+          <div class="signal"><span class="dot"></span><div><strong>"Activate what we have, before building."</strong> The Wharf, Hunter St Mall, the Post Office, Devonshire St — named as existing assets awaiting a hammer and a permission slip.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= BIG THREAD ============= -->
+<section class="thread-section">
+  <div class="wrap">
+    <div class="thread">
+      <div class="lbl">The single biggest thread</div>
+      <h3>One word kept showing up at every table: <em>connect</em>.</h3>
+      <p>Connect the precincts (Darby, Beaumont, Honeysuckle, Wickham). Connect the ages (aged care + child care, 14–18 and 65+ both named as underserved). Connect the suburbs to the centre (Park &amp; Ride, suburb hubs, village squares). Connect the senses (light, lighting trails, walkable paths, coloured footpaths). The strongest civic ask in this room was not for new buildings — it was for the <em>threads between</em> what we already have.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= TENSIONS ============= -->
+<section class="tight">
+  <div class="wrap">
+    <h2 class="h">Tensions you held in the room</h2>
+    <p class="sub">These aren't contradictions to resolve. They're the design tensions any 2050 plan will have to negotiate. The salon held them all at once.</p>
+    <div class="tensions">
+
+      <div class="tension-card">
+        <div class="pair"><span class="a">Car convenience</span><span class="vs">vs</span><span class="b">Walking &amp; cycling</span></div>
+        <p>Most people drove to the venue. Most post-its want the opposite future.</p>
+      </div>
+
+      <div class="tension-card">
+        <div class="pair"><span class="a">Build new</span><span class="vs">vs</span><span class="b">Activate existing</span></div>
+        <p>"We don't need to spend much — what we have, we just haven't activated yet."</p>
+      </div>
+
+      <div class="tension-card">
+        <div class="pair"><span class="a">CBD focus</span><span class="vs">vs</span><span class="b">Suburb life</span></div>
+        <p>"A village square in each neighbourhood." "Western hub." "HUBS in SUBURBS."</p>
+      </div>
+
+      <div class="tension-card">
+        <div class="pair"><span class="a">Drinking culture</span><span class="vs">vs</span><span class="b">Non-drinking culture</span></div>
+        <p>Both wanted, neither replacing the other. Cafes, swims, festivals "good bands, not alcohol".</p>
+      </div>
+
+      <div class="tension-card">
+        <div class="pair"><span class="a">E-bike freedom</span><span class="vs">vs</span><span class="b">Pedestrian safety</span></div>
+        <p>You like them. You also want them off Honeysuckle and off the Fernleigh footpath.</p>
+      </div>
+
+      <div class="tension-card">
+        <div class="pair"><span class="a">Vibrancy at night</span><span class="vs">vs</span><span class="b">Residential quiet</span></div>
+        <p>The 65+ apartment buyer and the 18–25 nightlife cohort live on the same block.</p>
+      </div>
+
+      <div class="tension-card">
+        <div class="pair"><span class="a">Growth (HSR, density)</span><span class="vs">vs</span><span class="b">Affordability</span></div>
+        <p>If high-speed rail isn't actively planned, "it will decrease housing affordability 100%."</p>
+      </div>
+
+      <div class="tension-card">
+        <div class="pair"><span class="a">18–25 well-served</span><span class="vs">vs</span><span class="b">All other ages</span></div>
+        <p>The night-time service curve is U-shaped — and you noticed.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============= QUOTES ============= -->
+<section class="quotes-section">
+  <div class="wrap">
+    <h2 class="h">What you actually <span class="accent">said</span></h2>
+    <p class="sub">Your words, lightly tidied for readability. Each one is in the room with us still.</p>
+    <div class="quotes-grid">
+      <blockquote class="pq">
+        <p>The trains don't take you anywhere besides Sydney. The buses are messy and unsafe. The tram just takes you from the train station to the beach.</p>
+        <div class="src">— Transport &amp; Mobility</div>
+      </blockquote>
+      <blockquote class="pq">
+        <p>By 2050, ZERO harassment of women &amp; children.</p>
+        <div class="src">— Health &amp; Wellbeing (a post-it that appeared three times)</div>
+      </blockquote>
+      <blockquote class="pq">
+        <p>Now we've got more run clubs than nightclubs.</p>
+        <div class="src">— Night Culture &amp; Economy</div>
+      </blockquote>
+      <blockquote class="pq">
+        <p>Bike rides in Glenrock at night. I used to do that quite a bit. It's quite an experience.</p>
+        <div class="src">— Night Culture &amp; Economy</div>
+      </blockquote>
+      <blockquote class="pq">
+        <p>We should be e-bike city. We've got the perfect climate.</p>
+        <div class="src">— Transport &amp; Mobility</div>
+      </blockquote>
+      <blockquote class="pq">
+        <p>Late-night swims at the baths. At full moon. The full moon down at the baths is super busy. It's great.</p>
+        <div class="src">— Night Culture &amp; Economy</div>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============= WISHES ============= -->
+<section>
+  <div class="wrap">
+    <h2 class="h">Wishes you <span class="accent">posted most</span></h2>
+    <p class="sub">The single most-repeated wish from each table — distilled, not invented.</p>
+    <div class="wishes">
+
+      <div class="wish transport">
+        <div class="icon">🚲</div>
+        <span class="topic-tag">Transport</span>
+        <h4>Be the e-bike city you already are</h4>
+        <p>Separated lanes, lighting, e-bike licences and free late-night light rail came up again and again. The post-it of post-its: <em>"We should be e-bike city. We've got the perfect climate."</em></p>
+      </div>
+
+      <div class="wish health">
+        <div class="icon">🏊</div>
+        <span class="topic-tag">Wellbeing</span>
+        <h4>Use the water you already have</h4>
+        <p>Floating saunas in the harbour. Late-night swims at full moon. Bogey Hole. Bar Beach. "Any beach". The most distinctively-Novocastrian wellbeing answer — already free, already there.</p>
+      </div>
+
+      <div class="wish night">
+        <div class="icon">💡</div>
+        <span class="topic-tag">Night</span>
+        <h4>Light the city like a single piece</h4>
+        <p>"Coloured foot paths to connect the city." "Community parks with diffuse lighting connecting hotspots." "Lighting + the presence of people make a place feel safe." Light as the network, not just the bulb.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============= NEXT ============= -->
+<section class="next-section">
+  <div class="wrap">
+    <div class="next-card">
+      <h2>Where this goes</h2>
+      <p>Salon 1 was the first conversation, not the last. We're collating these signals to share with civic and community partners — and using them to shape the next salon and the 2026 main event. If you'd like to nerd out on the underlying data, we've kept everything open.</p>
+      <a class="cta" href="https://tedxcookshill.com.au">Back to TEDxNewy</a>
+      <a class="cta outline" href="insights.html">See the full analysis</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  Captured at TEDxNewy Salon 1, 30 April – 1 May 2026 · Compiled with love by the volunteer team · This event operates under licence from TED.
+</footer>
+
+</body>
+</html>
