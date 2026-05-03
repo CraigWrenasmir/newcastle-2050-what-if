@@ -1,0 +1,16 @@
+# Raw source media — too large for the repo and not needed for the page.
+# Originals retained locally; transcripts and post-it data drive the site.
+*.WAV
+*.wav
+*.HEIC
+*.heic
+Night Culture Audio/
+Transport Audio/
+Post Its/
+
+# macOS / Word noise
+.DS_Store
+~$*
+
+# Local-only artefacts
+_jpg/
