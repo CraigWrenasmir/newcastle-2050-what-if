@@ -4026,7 +4026,6 @@
     sections.forEach(s => s.classList.remove('active'));
     t.classList.add('active');
     document.querySelector(`section.category[data-cat="${t.dataset.tab}"]`).classList.add('active');
-    window.scrollTo({top: 0, behavior: 'smooth'});
   }));
 
   // Transcripts are embedded inline — no fetch needed.
